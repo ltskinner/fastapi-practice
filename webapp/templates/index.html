@@ -1,0 +1,21 @@
+
+
+<html>
+<head>
+    <title>FastAPI with Jinja2</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1>Welcome to a FastAPI app returning HTML template</h1>
+    <h2>Routes:</h2>
+    <div>
+        <h3>/</h3>
+        <p>The index of the app</p>
+    </div>
+    <div>
+        <h3>/items/{INT}</h3>
+        <p>Functional endpoint</p>
+    </div>
+</body>
+</html>
+
