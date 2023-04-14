@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,7 +27,9 @@ jobs:
     - name: Test
       run: |
         make test-unit
+
   test:
+    needs: build
     name: Test Docker Image
     runs-on: ubuntu-latest
     steps:
@@ -51,6 +52,7 @@ jobs:
           make test-locust
 
   docker:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       -
