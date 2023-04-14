@@ -38,7 +38,10 @@ run-app:
 docker-build:
 	docker build -t ltskinner/fastapi-jinja2:latest .
 
-docker-run:
+docker-run-it-rm:
+	docker run -it -p 80:8000 --rm ltskinner/fastapi-jinja2
+
+docker-run-detach:
 	# on everything holy
 	# 80:8000 grabs an app running on 8000 forwards to container 80
 	docker run -d --name faj2 -p 80:8000 ltskinner/fastapi-jinja2
