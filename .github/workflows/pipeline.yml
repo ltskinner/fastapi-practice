@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    name: Build and Unit Test
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,7 +32,8 @@ jobs:
 
   test:
     needs: build
-    name: Test Docker Image
+
+    name: Load-test with Locust
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
@@ -53,6 +56,8 @@ jobs:
 
   docker:
     needs: test
+
+    name: Build and Push to Dockerhub
     runs-on: ubuntu-latest
     steps:
       -
