@@ -10,7 +10,6 @@ install:
 		pip install -r requirements.txt
 
 install-test:
-	make install
 	pip install -r requirements-test.txt
 
 lint-force:
@@ -39,16 +38,16 @@ run-app:
 docker-build:
 	docker build -t ltskinner/fastapi-jinja2:latest .
 
-docker-push:
-	docker push ltskinner/fastapi-jinja2:latest
-
 docker-run:
 	# on everything holy
 	# 80:8000 grabs an app running on 8000 forwards to container 80
 	docker run -d --name faj2 -p 80:8000 ltskinner/fastapi-jinja2
 
+docker-poll:
+	docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"
+
 docker-stop:
 	docker stop faj2
 
-docker-poll:
-	docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"
+docker-push:
+	docker push ltskinner/fastapi-jinja2:latest
