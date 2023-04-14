@@ -1,0 +1,30 @@
+# Multi-python version install, lint, and test
+
+name: Python 3.7, 3.8, 3.9
+
+on:
+  [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python $ {{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-verison }}
+    - name: Install dependencies
+      run: |
+        make install-test
+    - name: Lint
+      run: |
+        make lint-check
+    - name: Test
+      run: |
+        make test-unit
