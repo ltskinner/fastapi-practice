@@ -14,13 +14,13 @@ jobs:
           make docker-build
       - name: Run container
         run: |
-          docker-run
+          make docker-run
       - name: Poll Hosts
         run: |
-          docker-poll
+          make docker-poll
       - name: Install Locust
         run: |
           make install-test
       - name: Run Locust
         run: |
-          test-locust
+          make test-locust
