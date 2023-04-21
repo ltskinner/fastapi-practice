@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  build:
+    commands:
+      - make install
+      - make install-test 
+
+artifacts:
+  files:
+    -./webapp/*
+    - wsgi.py
+    - requirements.txt
+  name: dn-45-$(date +%Y-%m-%d)
