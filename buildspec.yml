@@ -11,6 +11,7 @@ phases:
 
 artifacts:
   files:
+    - ./webapp/**/*
     - ./webapp/*
     - wsgi.py
     - requirements.txt
